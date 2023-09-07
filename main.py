@@ -1,5 +1,5 @@
 import datetime
-from fastapi import FastAPI, Response
+from fastapi import FastAPI, Response, Query
 
 app = FastAPI()
 
@@ -18,8 +18,13 @@ def get_time_and_day():
     return {"Day of Week": day_of_week, "UTC Time": utc_time}
 
 
-@app.get("/track/{track}/{slack_name}")
-def result(response: Response, track: str, slack_name: str):
+
+
+@app.get("/api")
+async def result(response: Response, 
+                slack_name: str = Query(..., description="The name of the slack user"),
+    			track: str = Query(..., description="The track of the user")
+):
     # Get the result for time and day
     time_and_day_result = get_time_and_day()
     

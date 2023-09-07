@@ -13,8 +13,8 @@ def get_time_and_day():
 
     # Format the time
     utc_time = utc_now.strftime("%Y-%m-%dT%H:%M:%SZ")
-
-    # Return as a dictionary
+    
+	# Return as a dictionary
     return {"Day of Week": day_of_week, "UTC Time": utc_time}
 
 
